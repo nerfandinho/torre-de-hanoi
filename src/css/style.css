@@ -1,0 +1,46 @@
+body {
+    display: flex;
+    justify-content: center;
+}
+
+#main {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 300px;
+    height: 200px;
+    /* background-color: gray; */
+}
+
+#pin1,
+#pin2,
+#pin3 {
+    height: 175px;
+    width: 95px;
+    background-color: aqua;
+    display: flex;
+    flex-direction: column-reverse;
+    align-items: center;
+    cursor: pointer;
+}
+
+#block1,
+#block2,
+#block3 {
+    height: 25px;
+}
+
+#block1 {
+    width: 100%;
+    background-color: yellow;
+}
+
+#block2 {
+    width: 75%;
+    background-color: green;
+}
+
+#block3 {
+    width: 50%;
+    background-color: blue;
+}
