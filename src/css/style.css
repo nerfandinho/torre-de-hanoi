@@ -26,7 +26,9 @@ main {
     cursor: pointer;
 }
 
-#pin1 * {
+#pin1 *,
+#pin2 *,
+#pin3 * {
     height: 25px;
 }
 
