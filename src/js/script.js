@@ -2,8 +2,23 @@ const game = document.getElementById("game"),
     main = document.querySelector("main"),
     buttons = document.getElementById("buttons");
 
+let numJogadas = 0;
+
 function criaJogo(numeroDeBlocos = 3) {
-    document.getElementById("game").innerHTML = "";
+    const playCount = document.createElement("div"),
+        p = document.createElement("p"),
+        span = document.createElement("span");
+
+    p.innerText = "Número de jogadas: ";
+
+    span.innerText = numJogadas;
+    span.id = "numJogadas";
+
+    playCount.id = "playCount";
+    playCount.appendChild(p);
+    playCount.appendChild(span);
+
+    main.prepend(playCount);
 
     for (let torre = 1; torre <= 3; torre++) {
         const div = document.createElement("div");
@@ -88,11 +103,16 @@ function mudaDificuldade() {
     resetaJogo(ultimaDificuldade);
 }
 
-function resetaJogo(numeroDeBlocos = 3) {
-    criaJogo(numeroDeBlocos);
-}
-
 let mao = '';
+
+function resetaJogo(numeroDeBlocos = 3) {
+    document.getElementById("game").innerHTML = "";
+    document.getElementById("playCount").remove();
+
+    criaJogo(numeroDeBlocos);
+    mao = '';
+    numJogadas = 0;
+}
 
 function moveBloco(evt) {
     let colunaCLicada = evt.currentTarget;
@@ -103,5 +123,12 @@ function moveBloco(evt) {
     if (mao !== ultimoBloco) {
         colunaCLicada.appendChild(mao);
         mao = '';
+
+        contaJogada();
     }
+}
+
+function contaJogada() {
+    numJogadas++;
+    document.getElementById("numJogadas").innerHTML = numJogadas;
 }
