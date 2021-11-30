@@ -120,6 +120,11 @@ function resetaJogo(numeroDeBlocos = 3) {
 function moveBloco(evt) {
     let colunaCLicada = evt.currentTarget;
     let ultimoBloco = colunaCLicada.lastElementChild;
+    
+    if(mao === null){
+        mao = ''
+    }
+    
     if (mao === '') {
         mao = ultimoBloco ;
     }
@@ -156,6 +161,13 @@ function vitoria(){
     if(contadorFilhos === ultimaDificuldade){
         popUp('Parabéns, você venceu!', 'Continue jogando e tente bater seu record')
     }
+}
+
+// Função verificar se a coluna está vazia
+function colunaVazia(){
+    const dentroGame = document.querySelectorAll('#game, *');
+
+
 }
 
 
