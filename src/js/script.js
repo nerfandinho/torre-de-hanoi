@@ -97,7 +97,7 @@ const selection = document.getElementsByName("num-discos");
 function mudaDificuldade() {
     for (let i in selection) {
         if (selection[i].checked) {
-            ultimaDificuldade = selection[i].value;
+            ultimaDificuldade = Number(selection[i].value);
             break;
         }
     }
@@ -156,8 +156,8 @@ function vitoria() {
 
     if (contadorFilhos === ultimaDificuldade) {
         popUp('Parabéns, você venceu!', 'Continue jogando e tente bater seu record');
-        const removerEvento = document.querySelectorAll("*[id*=pin]");
-        removerEvento.forEach((item) => item.removeEventListener("click", moveBloco));
+         const removerEvento = document.querySelectorAll('#pin1, #pin2, #pin3');
+         removerEvento.forEach((item) => item.removeEventListener("click", moveBloco));
     }
 }
 
