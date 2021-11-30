@@ -20,3 +20,9 @@ function criaJogo(numBlocos = 3) {
     }
 }
 criaJogo();
+
+function moveBloco(){
+    
+
+}
+
