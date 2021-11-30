@@ -3,6 +3,10 @@ body, main {
     justify-content: center;
 }
 
+main {
+    flex-direction: column;
+}
+
 #game {
     display: flex;
     justify-content: space-between;
