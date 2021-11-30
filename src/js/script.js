@@ -132,3 +132,23 @@ function contaJogada() {
     numJogadas++;
     document.getElementById("numJogadas").innerHTML = numJogadas;
 }
+
+function popUp(situacao="Situação", mensagem="Pequena mensagem a ser mostrada!") {
+    const blocker = document.createElement("section"),
+          popUp = document.createElement("div"),
+          span = document.createElement("span"),
+          p = document.createElement("p");
+
+    blocker.classList.add("blocker");
+    popUp.classList.add("pop-up");
+
+    span.innerText = situacao;
+    popUp.appendChild(span);
+
+    p.innerText = mensagem;
+    popUp.appendChild(p);
+
+    blocker.appendChild(popUp);
+
+    document.body.appendChild(blocker);
+}
