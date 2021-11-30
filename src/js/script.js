@@ -119,16 +119,14 @@ function resetaJogo(numeroDeBlocos = 3) {
 function moveBloco(evt) {
     let colunaCLicada = evt.currentTarget;
     let ultimoBloco = colunaCLicada.lastElementChild;
-    
-    if(mao === null){
+
+    if (mao === null) {
         mao = ''
     }
-    
-    if (mao === '') {
-        mao = ultimoBloco ;
-    }
 
-    else if (mao !== ultimoBloco) {
+    if (mao === '') {
+        mao = ultimoBloco;
+    } else if (mao !== ultimoBloco) {
         tamanhoBloco(mao, colunaCLicada, ultimoBloco);
         mao = '';
 
@@ -139,39 +137,28 @@ function moveBloco(evt) {
 
 //Função verificar o tamanho dos blocos
 
-function tamanhoBloco(mao, colunaCLicada, ultimoBloco){
+function tamanhoBloco(mao, colunaCLicada, ultimoBloco) {
 
-    
-    if((colunaCLicada.lastElementChild === null) || (mao.clientWidth < ultimoBloco.clientWidth)){
+
+    if ((colunaCLicada.lastElementChild === null) || (mao.clientWidth < ultimoBloco.clientWidth)) {
         colunaCLicada.appendChild(mao);
-    }
-    else{
+    } else {
         popUp('Movimento inválido', 'O disco selecionado é maior que o da pilha escolhida!');
     }
 }
 
 
 //Função verificar vitória
-function vitoria(){
+function vitoria() {
     const coluna3 = document.getElementById('pin3');
     const contadorFilhos = coluna3.childElementCount;
 
-    if(contadorFilhos === ultimaDificuldade){
+    if (contadorFilhos === ultimaDificuldade) {
         popUp('Parabéns, você venceu!', 'Continue jogando e tente bater seu record')
     }
 }
 
-<<<<<<< HEAD
-=======
-// Função verificar se a coluna está vazia
-function colunaVazia(){
-    const dentroGame = document.querySelectorAll('#game, *');
 
-
-}
-
-
->>>>>>> 1ba8e3d9337081d9cca2b2ec4e6bfd8bcff50e81
 //Function contar as jogadas
 
 function contaJogada() {
