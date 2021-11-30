@@ -77,15 +77,35 @@ function resetaJogo(numeroDeBlocos = 3) {
 
 let mao = '';
 
+
+
 function moveBloco(evt) {
 
     let colunaCLicada = evt.currentTarget;
     let ultimoBloco = colunaCLicada.lastElementChild;
+    // if(ultimoBloco){
+    //     let tamanhoBloco = ultimoBloco.clientWidth;
+    // }
+    
     if (mao === '') {
-        mao = ultimoBloco;
+        mao = ultimoBloco ;
     }
-    if (mao !== ultimoBloco) {
-        colunaCLicada.appendChild(mao);
+
+    else if (mao !== ultimoBloco) {
+        tamanhoBloco(mao, colunaCLicada, ultimoBloco);
         mao = '';
     }
+}
+
+function tamanhoBloco(mao, colunaCLicada, ultimoBloco){
+    
+
+    
+    if((colunaCLicada.lastElementChild === null) || (mao.clientWidth < ultimoBloco.clientWidth)){
+        colunaCLicada.appendChild(mao);
+    }
+    else{
+        alert("Movimento inválido!")
+    }
+
 }
