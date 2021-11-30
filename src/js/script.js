@@ -1,14 +1,14 @@
-const principal = document.getElementById("main");
+const principal = document.getElementById("game");
 
 function criaJogo(numBlocos = 3) {
     for (let torre = 1; torre <= 3; torre++) {
-        const section = document.createElement("section");
+        const div = document.createElement("div");
 
         // Pode-se mudar o nome da função depois
-        section.addEventListener("click", moveBloco);
+        div.addEventListener("click", moveBloco);
 
-        section.id = `pin${torre}`;
-        principal.appendChild(section);
+        div.id = `pin${torre}`;
+        principal.appendChild(div);
     }
 
     const comeco = document.getElementById("pin1");
@@ -20,3 +20,7 @@ function criaJogo(numBlocos = 3) {
     }
 }
 criaJogo();
+
+function moveBloco() {
+    
+}
