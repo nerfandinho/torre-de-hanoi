@@ -63,7 +63,7 @@ function criaDifficultyChanger() {
         span = document.createElement("span");
 
     span.innerText = "Escolha a sua dificuldade: "
-    box.appendChild(span);
+    buttons.appendChild(span);
 
     for (let options = 3; options <= 5; options++) {
         const option = document.createElement("input"),
@@ -84,7 +84,7 @@ function criaDifficultyChanger() {
 
     confirmButton.addEventListener("click", mudaDificuldade);
 
-    box.appendChild(confirmButton);
+    buttons.appendChild(confirmButton);
 
     buttons.appendChild(box);
 }
