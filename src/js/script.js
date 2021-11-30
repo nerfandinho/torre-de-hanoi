@@ -9,7 +9,8 @@ function criaJogo(numeroDeBlocos = 3) {
 
     const playCount = document.createElement("div"),
         p = document.createElement("p"),
-        span = document.createElement("span");
+        span = document.createElement("span"),
+        madeira = document.createElement("div");
 
     p.innerText = "Número de jogadas: ";
 
@@ -154,7 +155,9 @@ function vitoria() {
     const contadorFilhos = coluna3.childElementCount;
 
     if (contadorFilhos === ultimaDificuldade) {
-        popUp('Parabéns, você venceu!', 'Continue jogando e tente bater seu record')
+        popUp('Parabéns, você venceu!', 'Continue jogando e tente bater seu record');
+        const removerEvento = document.querySelectorAll("*[id*=pin]");
+        removerEvento.forEach((item) => item.removeEventListener("click", moveBloco));
     }
 }
 

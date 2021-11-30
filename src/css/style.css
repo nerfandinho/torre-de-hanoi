@@ -3,25 +3,96 @@
     src: url(/src/fonts/gill-sans-ultra-bold-2-maisfontes.71cb/gill-sans-ultra-bold-2.ttf);
 }
 
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans+Condensed:ital,wght@0,300;0,700;1,300&display=swap');
+
 /* = CORPO ========== */
 body {
     background-image: url(/src/img/bg-image.jpg);
     background-size: auto;
+    font-family: 'Open Sans Condensed', sans-serif;
+    animation: bg-image 240s infinite linear;
 }
 
-body, main {
+@keyframes bg-image {
+    0% {
+        background-position: left;
+    }
+
+    50% {
+        background-position: right;
+    }
+
+    100% {
+        background-position: left;
+    }
+}
+
+body,
+main {
     display: flex;
     align-items: center;
     flex-direction: column;
     justify-content: center;
 }
 
+main {
+    background-color: rgba(255, 255, 255, 0.8);
+    padding: 25px;
+    border-radius: 25px;
+    box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.25);
+    width: 85%;
+    max-width: 450px;
+}
+
+button {
+    font-family: 'Open Sans Condensed', sans-serif;
+    background-color: #4D9140;
+    color: white;
+    padding: 5px;
+    border: none;
+    border-radius: 7px;
+    cursor: pointer;
+    transition: 0.5s;
+}
+
+button:hover {
+    background-color: #417736;
+    transition: 0.5s;
+}
+
+button:first-of-type {
+    margin-bottom: 10px;
+}
+
+button:last-of-type {
+    margin-top: 10px;
+}
 
 h1 {
     font-family: "Gill Sans Ultra Bold";
     color: #FEE238;
     text-align: center;
-    width: 175px;
+    width: 275px;
+    font-size: 50px;
+    -webkit-text-stroke: 2px #1A48A0;
+    animation: 10s scaling infinite;
+}
+
+@keyframes scaling {
+    0% {
+        transform: rotate(3deg);
+        scale: 90%;
+    }
+
+    50% {
+        transform: rotate(0deg);
+        scale: 100%;
+    }
+
+    100% {
+        transform: rotate(3deg);
+        scale: 90%;
+    }
 }
 
 /* = ELEMENTOS ========== */
@@ -40,7 +111,7 @@ h1 {
     transform: rotate(7deg);
     background-color: #C11314;
     box-shadow: 2px 2px 0 #FA6964;
-    outline: 0.25px solid #ff615c;
+    outline: 0.25px ridge #ff615c;
 
     animation: 5s rotating infinite;
 }
@@ -74,30 +145,58 @@ h1 {
 #game {
     display: flex;
     justify-content: space-between;
-    align-items: center;
+    align-items: flex-end;
     width: 100%;
     height: 200px;
+    border-bottom: 10px groove brown;
+    margin-bottom: 15px;
+}
+
+#playCount p {
+    font-size: 20px;
+    margin-bottom: 5px;
 }
 
 
 /* - PINOS ---------- */
 #game * {
     height: 175px;
-    width: 95px;
-    background-color: aqua;
+    width: 100%;
     display: flex;
     flex-direction: column-reverse;
     align-items: center;
     cursor: pointer;
 }
 
+#base {
+    background-color: red;
+    height: 20px;
+}
+
+#game *:hover :last-child{
+    scale: 110%;
+    transition: 0.5s;
+}
 
 /* - DISCOS ---------- */
 #pin1 *,
 #pin2 *,
 #pin3 * {
+    transition: 0.5s;
     height: 25px;
     border-radius: 100px;
+    border: 5px groove rgba(255, 255, 255, 0.3);
+}
+
+#pin2 {
+    padding: 0 15px;
+    margin: 0 15px;
+    border-left: 5px groove gray;
+    border-right: 5px groove gray;
+}
+
+*[id*="block"] {
+    animation: appear 0.25s;
 }
 
 #block1 {
@@ -125,6 +224,17 @@ h1 {
     background-color: #B4DC8C;
 }
 
+@keyframes appear {
+    from {
+        scale: 0%;
+    }
+
+    to {
+        scale: 100%;
+    }
+}
+
+
 
 /* = POPUP ========== */
 .pop-up {
@@ -137,31 +247,51 @@ h1 {
     z-index: 1;
     height: 100px;
     width: 200px;
-    background-color: white;
+    background-color: #1A48A0;
+    border: 4px ridge #FFEE15;
+    color: white;
+    padding: 25px;
+    border-radius: 25px;
+    text-align: center;
+    box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.25);
 }
 
-.pop-up[animation = "popupIn"] {
+.pop-up span {
+    font-size: 25px;
+}
+
+.pop-up p {
+    font-size: 15px;
+}
+
+.pop-up[animation="popupIn"] {
     animation: popupIn 0.5s;
 }
 
 @keyframes popupIn {
     from {
-        transform: translateY(-100%);
+        transform: translateY(-120%);
+        scale: 90%;
     }
+
     to {
         transform: translateY(0);
+        scale: 100%;
     }
 }
 
-.pop-up[animation = "popupOut"] {
+.pop-up[animation="popupOut"] {
     animation: popupOut 0.5s;
 }
 
 @keyframes popupOut {
     from {
         transform: translateY(0);
+        scale: 100%;
     }
+
     to {
-        transform: translateY(-100%);
+        transform: translateY(-120%);
+        scale: 90%;
     }
 }
