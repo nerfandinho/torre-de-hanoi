@@ -119,8 +119,7 @@ function moveBloco(evt) {
     let ultimoBloco = colunaCLicada.lastElementChild;
     if (mao === '') {
         mao = ultimoBloco;
-    }
-    if (mao !== ultimoBloco) {
+    } else if (mao !== ultimoBloco) {
         colunaCLicada.appendChild(mao);
         mao = '';
 
@@ -133,7 +132,7 @@ function contaJogada() {
     document.getElementById("numJogadas").innerHTML = numJogadas;
 }
 
-function popUp(situacao="Situação", mensagem="Pequena mensagem a ser mostrada!") {
+function popUp(situacao = "Situação", mensagem = "Pequena mensagem a ser mostrada!") {
     const blocker = document.createElement("section"),
           popUp = document.createElement("div"),
           span = document.createElement("span"),

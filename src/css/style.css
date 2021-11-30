@@ -1,21 +1,41 @@
+/* = CORPO ========== */
 body, main {
     display: flex;
     justify-content: center;
 }
 
 main {
+    align-items: center;
     flex-direction: column;
 }
 
+
+/* = ELEMENTOS ========== */
+#playCount {
+    display: flex;
+}
+
+#buttons {
+    display: flex;
+    flex-direction: column;
+}
+
+#options {
+    display: flex;
+}
+
+
+/* = JOGO ========== */
 #game {
     display: flex;
     justify-content: space-between;
     align-items: center;
     width: 300px;
     height: 200px;
-    /* background-color: gray; */
 }
 
+
+/* - PINOS ---------- */
 #game * {
     height: 175px;
     width: 95px;
@@ -26,6 +46,8 @@ main {
     cursor: pointer;
 }
 
+
+/* - DISCOS ---------- */
 #pin1 *,
 #pin2 *,
 #pin3 * {
@@ -57,6 +79,8 @@ main {
     background-color: #B4DC8C;
 }
 
+
+/* = POPUP ========== */
 .blocker {
     display: flex;
     justify-content: center;
