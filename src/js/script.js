@@ -5,6 +5,8 @@ const game = document.getElementById("game"),
 let numJogadas = 0;
 
 function criaJogo(numeroDeBlocos = 3) {
+    numJogadas = 0;
+
     const playCount = document.createElement("div"),
         p = document.createElement("p"),
         span = document.createElement("span");
@@ -93,9 +95,7 @@ const selection = document.getElementsByName("num-discos");
 
 function mudaDificuldade() {
     for (let i in selection) {
-        if (selection[i].checked) { if(ultimoBloco === mudaDificuldade){
-            alert('Voce venceu')
-        }
+        if (selection[i].checked) {
             ultimaDificuldade = selection[i].value;
             break;
         }
@@ -112,7 +112,6 @@ function resetaJogo(numeroDeBlocos = 3) {
 
     criaJogo(numeroDeBlocos);
     mao = '';
-    numJogadas = 0;
 }
 
 // Função para mover os blocos
@@ -136,7 +135,6 @@ function moveBloco(evt) {
 //Função verificar o tamanho dos blocos
 
 function tamanhoBloco(mao, colunaCLicada, ultimoBloco){
-    
 
     
     if((colunaCLicada.lastElementChild === null) || (mao.clientWidth < ultimoBloco.clientWidth)){
@@ -157,7 +155,6 @@ function vitoria(){
         popUp('Parabéns, você venceu!', 'Continue jogando e tente bater seu record')
     }
 }
-
 
 //Function contar as jogadas
 
