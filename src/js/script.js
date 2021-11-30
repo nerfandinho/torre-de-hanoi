@@ -1,4 +1,5 @@
-const game = document.getElementById("game");
+const game = document.getElementById("game"),
+main = document.querySelector("main");
 
 function criaJogo(numBlocos = 3) {
     for (let torre = 1; torre <= 3; torre++) {
@@ -8,7 +9,7 @@ function criaJogo(numBlocos = 3) {
         div.addEventListener("click", moveBloco);
 
         div.id = `pin${torre}`;
-        principal.appendChild(div);
+        game.appendChild(div);
     }
 
     const comeco = document.getElementById("pin1");
@@ -21,6 +22,23 @@ function criaJogo(numBlocos = 3) {
 }
 criaJogo();
 
-function moveBloco() {
-    
+
+let mao = '';
+
+function moveBloco(evt) {
+
+    let colunaCLicada = evt.currentTarget;
+    let ultimoBloco = colunaCLicada.lastElementChild;
+    if(mao === ''){
+        mao = ultimoBloco;
+    }
+    if(mao !== ultimoBloco){
+        colunaCLicada.appendChild(mao);
+        mao = '';
+    }
 }
+
+
+    
+
+
