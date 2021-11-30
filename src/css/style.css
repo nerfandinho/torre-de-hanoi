@@ -16,9 +16,7 @@ main {
     /* background-color: gray; */
 }
 
-#pin1,
-#pin2,
-#pin3 {
+#game * {
     height: 175px;
     width: 95px;
     background-color: aqua;
@@ -28,23 +26,31 @@ main {
     cursor: pointer;
 }
 
-#block1,
-#block2,
-#block3 {
+#pin1 * {
     height: 25px;
 }
 
 #block1 {
     width: 100%;
-    background-color: yellow;
+    background-color: #F1060B;
 }
 
 #block2 {
-    width: 75%;
-    background-color: green;
+    width: 85%;
+    background-color: #1A48A0;
 }
 
 #block3 {
-    width: 50%;
-    background-color: blue;
+    width: 70%;
+    background-color: #FFEE15;
+}
+
+#block4 {
+    width: 55%;
+    background-color: #EAAB66;
+}
+
+#block5 {
+    width: 40%;
+    background-color: #B4DC8C;
 }

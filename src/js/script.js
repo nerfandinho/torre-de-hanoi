@@ -2,7 +2,9 @@ const game = document.getElementById("game"),
     main = document.querySelector("main"),
     buttons = document.getElementById("buttons");
 
-function criaJogo(numBlocos = 3) {
+function criaJogo(numeroDeBlocos = 3) {
+    document.getElementById("game").innerHTML = "";
+
     for (let torre = 1; torre <= 3; torre++) {
         const div = document.createElement("div");
 
@@ -10,15 +12,17 @@ function criaJogo(numBlocos = 3) {
         div.addEventListener("click", moveBloco);
 
         div.id = `pin${torre}`;
+
+        if (torre === 1) {
+            for (let block = 1; block <= numeroDeBlocos; block++) {
+                const bloco = document.createElement("div");
+
+                bloco.id = `block${block}`;
+                div.appendChild(bloco);
+            }
+        }
+
         game.appendChild(div);
-    }
-
-    const comeco = document.getElementById("pin1");
-    for (let block = 1; block <= numBlocos; block++) {
-        const bloco = document.createElement("div");
-
-        bloco.id = `block${block}`;
-        comeco.appendChild(bloco);
     }
 }
 criaJogo();
@@ -42,7 +46,7 @@ function criaDifficultyChanger() {
 
     for (let options = 3; options <= 5; options++) {
         const option = document.createElement("input"),
-              label = document.createElement("label");
+            label = document.createElement("label");
 
         option.type = "radio";
 
@@ -57,7 +61,9 @@ function criaDifficultyChanger() {
     confirmButton.id = "confirm";
     confirmButton.innerText = "Confirmar";
 
-    confirmButton.addEventListener("click", resetaJogo);
+    confirmButton.addEventListener("click", () => {
+        resetaJogo(3);
+    });
 
     box.appendChild(confirmButton);
 
@@ -65,11 +71,21 @@ function criaDifficultyChanger() {
 }
 criaDifficultyChanger();
 
-function resetaJogo(numBlocos = 3) {
-    document.getElementById("game").innerHTML = "";
-    criaJogo(numBlocos);
+function resetaJogo(numeroDeBlocos = 3) {
+    criaJogo(numeroDeBlocos);
 }
 
-function moveBloco() {
+let mao = '';
 
+function moveBloco(evt) {
+
+    let colunaCLicada = evt.currentTarget;
+    let ultimoBloco = colunaCLicada.lastElementChild;
+    if (mao === '') {
+        mao = ultimoBloco;
+    }
+    if (mao !== ultimoBloco) {
+        colunaCLicada.appendChild(mao);
+        mao = '';
+    }
 }
