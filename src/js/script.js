@@ -78,6 +78,7 @@ function criaDifficultyChanger() {
         label.prepend(option);
         box.appendChild(label);
     }
+    buttons.appendChild(box);
 
     confirmButton.id = "confirm";
     confirmButton.innerText = "Confirmar";
@@ -85,8 +86,6 @@ function criaDifficultyChanger() {
     confirmButton.addEventListener("click", mudaDificuldade);
 
     buttons.appendChild(confirmButton);
-
-    buttons.appendChild(box);
 }
 criaDifficultyChanger();
 
@@ -133,10 +132,9 @@ function contaJogada() {
 }
 
 function popUp(situacao = "Situação", mensagem = "Pequena mensagem a ser mostrada!") {
-    const blocker = document.createElement("section"),
-          popUp = document.createElement("div"),
-          span = document.createElement("span"),
-          p = document.createElement("p");
+    const popUp = document.createElement("div"),
+        span = document.createElement("span"),
+        p = document.createElement("p");
 
     blocker.classList.add("blocker");
     popUp.classList.add("pop-up");
@@ -147,7 +145,5 @@ function popUp(situacao = "Situação", mensagem = "Pequena mensagem a ser mostr
     p.innerText = mensagem;
     popUp.appendChild(p);
 
-    blocker.appendChild(popUp);
-
-    document.body.appendChild(blocker);
+    document.body.appendChild(popUp);
 }
