@@ -116,13 +116,31 @@ function resetaJogo(numeroDeBlocos = 3) {
 function moveBloco(evt) {
     let colunaCLicada = evt.currentTarget;
     let ultimoBloco = colunaCLicada.lastElementChild;
+    // if(ultimoBloco){
+    //     let tamanhoBloco = ultimoBloco.clientWidth;
+    // }
+    
     if (mao === '') {
-        mao = ultimoBloco;
-    } else if (mao !== ultimoBloco) {
-        colunaCLicada.appendChild(mao);
+        mao = ultimoBloco ;
+    }
+
+    else if (mao !== ultimoBloco) {
+        tamanhoBloco(mao, colunaCLicada, ultimoBloco);
         mao = '';
 
         contaJogada();
+    }
+}
+
+function tamanhoBloco(mao, colunaCLicada, ultimoBloco){
+    
+
+    
+    if((colunaCLicada.lastElementChild === null) || (mao.clientWidth < ultimoBloco.clientWidth)){
+        colunaCLicada.appendChild(mao);
+    }
+    else{
+        popUp('Movimento inválido', 'O disco selecionado é maior que o da pilha escolhida!');
     }
 }
 
@@ -136,8 +154,8 @@ function popUp(situacao = "Situação", mensagem = "Pequena mensagem a ser mostr
         span = document.createElement("span"),
         p = document.createElement("p");
 
-    blocker.classList.add("blocker");
     popUp.classList.add("pop-up");
+    popUp.setAttribute("animation", "popupIn");
 
     span.innerText = situacao;
     popUp.appendChild(span);
@@ -145,5 +163,12 @@ function popUp(situacao = "Situação", mensagem = "Pequena mensagem a ser mostr
     p.innerText = mensagem;
     popUp.appendChild(p);
 
-    document.body.appendChild(popUp);
+    document.body.prepend(popUp);
+
+    setTimeout(() => {
+        popUp.setAttribute("animation", "popupOut");
+        setTimeout(() => {
+            popUp.remove();
+        }, 500);
+    }, 2000);
 }

@@ -85,9 +85,36 @@ main {
     display: flex;
     justify-content: center;
     align-items: center;
+    flex-direction: column;
     position: fixed;
     z-index: 1;
     height: 100px;
     width: 200px;
     background-color: white;
+}
+
+.pop-up[animation = "popupIn"] {
+    animation: popupIn 0.5s;
+}
+
+@keyframes popupIn {
+    from {
+        transform: translateY(-100%);
+    }
+    to {
+        transform: translateY(0);
+    }
+}
+
+.pop-up[animation = "popupOut"] {
+    animation: popupOut 0.5s;
+}
+
+@keyframes popupOut {
+    from {
+        transform: translateY(0);
+    }
+    to {
+        transform: translateY(-100%);
+    }
 }
